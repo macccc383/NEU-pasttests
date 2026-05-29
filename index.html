@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Minimal Website</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="brand-wrap">
+				<a href="/" class="brand-link">
+					<img src="LogoNEU.png" alt="LogoNEU" class="site-logo" />
+				</a>
+				<span class="brand-divider" aria-hidden="true"></span>
+				<span class="brand-text">SƯU TẦM ĐỀ NEU</span>
+			</div>
+			<h1 class="visually-hidden">Minimal Website</h1>
+		</header>
+
+		<main class="canvas" role="main" aria-label="Blank canvas">
+			<div class="canvas-inner">
+				<h2 class="canvas-title bb-home"><a href="CATAGORY/BBAE/index.html" class="bb-link"><span class="accent-b">B</span><span class="bbae-dash">-</span>BAE</a></h2>
+			</div>
+		</main>
+		<div class="qa-container" aria-live="polite">
+			<button class="qa-toggle" aria-expanded="false" aria-controls="qa1">
+				<span class="qa-question">Vậy Website này để làm gì?</span>
+				<span class="qa-arrow" aria-hidden="true">▸</span>
+			</button>
+			<div id="qa1" class="qa-content" aria-hidden="true">
+				<p>Website này được tạo ra để các học sinh đăng những đề thi mà thầy cô không được chia sẻ cho học sinh xem, một cách ẩn danh, và làm cho kỳ thi cuối kỳ, hay giữa kì trở nên dễ dàng hơn haha</p>
+			</div>
+
+			<button class="qa-toggle" aria-expanded="false" aria-controls="qa2">
+				<span class="qa-question">Làm thế nào để tôi có thể đóng góp?</span>
+				<span class="qa-arrow" aria-hidden="true">▸</span>
+			</button>
+			<div id="qa2" class="qa-content" aria-hidden="true">
+				<p>hãy gửi đề mà bạn muốn được đăng lên website tại thi_neu@icloud.com</p>
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
