@@ -73,33 +73,48 @@ body{
 .modal-close{background:transparent;border:none;font-size:1.25rem;cursor:pointer}
 .modal-body{display:flex;gap:1rem;padding:1rem;overflow:auto}
 
-/* File viewer page layout: keep the file list and viewer side-by-side
-   so the viewer never overlaps or 'eats into' the file list text. */
-.bb-page-grid{display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:start;padding-top:.5rem}
-.bb-left{width:auto;min-width:220px}
-.bb-right{overflow:visible}
+/* File viewer page layout */
+.bb-canvas-wide{max-width:1140px;margin:0 auto}
+.bb-page-grid{display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:start;padding-top:.5rem}
+.bb-left{width:100%;min-width:0}
+.bb-right{width:100%;min-width:0;overflow:hidden}
 
-@media (max-width:720px){
-  .bb-page-grid{grid-template-columns:1fr}
-  .bb-left{min-width:0;width:100%;border-right:none;padding-right:0}
-  .bb-right{width:100%;padding-left:0}
-}
-.bb-left{width:40%;min-width:220px;border-right:1px solid #f1f2f5;padding-right:1rem}
-.bb-left h4{margin:.4rem 0;font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:600}
-.bb-left h4 a.bb-year{color:var(--text);text-decoration:none;font-weight:700;font-size:inherit}
-.bb-left h4 a.bb-year:hover{text-decoration:underline}
-.bb-left h5{margin:.4rem 0 .2rem;font-size:.9rem;color:var(--muted)}
+.bb-sidebar-card{background:#ffffff;border-radius:12px;padding:1.25rem;box-shadow:0 4px 20px rgba(11,18,32,0.05);border:1px solid #e2e8f0}
+.bb-left h5{margin:1.25rem 0 .5rem;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;padding-bottom:.25rem;border-bottom:1px solid #f1f5f9}
+.bb-left h5:first-child{margin-top:0}
 .bb-left ul{list-style:none;padding-left:0;margin:0}
 .bb-left li{margin:.25rem 0}
-.bb-file{color:var(--accent);text-decoration:none}
-.bb-file:hover{text-decoration:underline}
-.bb-right{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-left:1rem}
-.bb-right img{max-width:100%;height:auto;max-height:68vh;object-fit:contain;border-radius:6px;display:block;margin:0 auto}
-.bb-viewer-caption{color:var(--muted);font-size:.95rem;margin-top:.5rem}
+.bb-file{display:block;padding:.45rem .65rem;border-radius:8px;color:#334155;text-decoration:none;font-size:.9rem;font-weight:500;transition:all .15s ease;border-left:3px solid transparent;word-break:break-word}
+.bb-file:hover{background:#f8fafc;color:#1d4ed8}
+.bb-file.active{background:#eff6ff;color:#1d4ed8;font-weight:600;border-left-color:#2563eb;box-shadow:0 1px 3px rgba(37,99,235,0.08)}
 
-/* Rotate images marked as rotated-right */
-.bb-right img.bb-rotated-right{transform:rotate(90deg);transform-origin:center center;max-width:68vh;max-height:100%;object-fit:contain;display:block;margin:0 auto}
-.bb-lb-panel img.bb-rotated-right{transform:rotate(90deg);transform-origin:center center;max-width:80vh;max-height:80vw;object-fit:contain;display:block;margin:0 auto}
+/* Viewer Card */
+.bb-viewer-card{background:#ffffff;border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(11,18,32,0.05);overflow:hidden;display:flex;flex-direction:column}
+.bb-viewer-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;padding:.75rem 1rem;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+.bb-toolbar-info{display:flex;align-items:center;gap:.75rem;min-width:0}
+.bb-doc-counter{background:#e2e8f0;color:#334155;font-size:.8rem;font-weight:600;padding:.2rem .55rem;border-radius:12px;white-space:nowrap}
+.bb-doc-title{font-size:.95rem;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb-toolbar-actions{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.bb-btn-group{display:inline-flex;background:#fff;border:1px solid #cbd5e1;border-radius:6px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.bb-tool-btn{background:#fff;border:none;border-right:1px solid #e2e8f0;padding:.35rem .7rem;font-size:.85rem;font-weight:500;color:#334155;cursor:pointer;transition:background .15s ease;display:inline-flex;align-items:center;justify-content:center;user-select:none}
+.bb-tool-btn:last-child{border-right:none}
+.bb-tool-btn:hover{background:#f1f5f9;color:#0f172a}
+.bb-tool-btn:active{background:#e2e8f0}
+.bb-tool-btn.icon-btn{min-width:32px;font-size:.95rem;font-weight:700}
+
+/* Viewer Frame viewport */
+.bb-viewer-frame{position:relative;width:100%;height:78vh;min-height:540px;max-height:820px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#090d16;user-select:none}
+.bb-viewer-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transform-origin:center center;transition:transform .2s cubic-bezier(0.2,0,0,1);filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));cursor:zoom-in}
+
+/* Spinner & Loading */
+.bb-spinner{display:none;position:absolute;width:40px;height:40px;border:4px solid rgba(255,255,255,0.2);border-top-color:#3b82f6;border-radius:50%;animation:bb-spin .8s linear infinite;z-index:10}
+@keyframes bb-spin{to{transform:rotate(360deg)}}
+.bb-viewer-frame.loading .bb-spinner{display:block}
+.bb-viewer-frame.loading img{opacity:.2}
+.bb-viewer-frame.error img{display:none}
+
+.bb-viewer-footer{padding:.6rem 1rem;background:#fff;border-top:1px solid #f1f5f9;text-align:center}
+.bb-viewer-caption{color:var(--muted);font-size:.9rem;margin:0}
 
 /* Year grid (3x3 tiles) */
 .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:980px;margin:2rem auto;padding:0 1rem}
@@ -142,14 +157,13 @@ body{
   .bb-brand--header .bbae-brand .bbae-dash{font-size:clamp(78px,20vw,240px)}
 }
 
-@media (max-width:720px){
+@media (max-width:768px){
   .modal-body{flex-direction:column}
-  .bb-left{width:100%;border-right:none;padding-right:0}
-  .bb-right{width:100%;padding-left:0}
-}
-
-@media (max-width:480px){
-  /* compact header on small screens */
+  .bb-page-grid{grid-template-columns:1fr;gap:1rem}
+  .bb-viewer-frame{height:52vh;min-height:340px}
+  .bb-viewer-toolbar{padding:.5rem .75rem}
+  .bb-toolbar-info{width:100%;justify-content:space-between}
+  .bb-toolbar-actions{width:100%;justify-content:space-between}
 }
 
 /* Lightbox for Năm pages */

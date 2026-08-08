@@ -16,32 +16,74 @@
       <h1 class="visually-hidden">Năm 1</h1>
     </header>
 
-    <main class="canvas container" role="main" aria-label="Năm 1 content">
-      <div class="canvas-inner">
-        <h2 class="canvas-title" style="font-size:28px;">Năm 1</h2>
+    <main class="canvas container bb-canvas-wide" role="main" aria-label="Năm 1 content">
+      <div class="canvas-inner bb-canvas-wide">
+        <h2 class="canvas-title" style="font-size:28px;margin-bottom:1.25rem;">Năm 1</h2>
 
         <div class="bb-page-grid">
           <aside class="bb-left">
-            <h5>Business Enviroment</h5>
-            <ul>
-              <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2685.JPG">IMG_2685.JPG</a></li>
-              <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2686.JPG" data-rotate="90">IMG_2686.JPG</a></li>
-              <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2687.JPG" data-rotate="90">IMG_2687.JPG</a></li>
-              <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2688.JPG" data-rotate="90">IMG_2688.JPG</a></li>
-              <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2689.JPG" data-rotate="90">IMG_2689.JPG</a></li>
-            </ul>
+            <div class="bb-sidebar-card">
+              <h5>Biology</h5>
+              <ul>
+                <li><a href="#" class="bb-file" data-src="Biology/IMG_1764.jpeg" data-rotate="90">IMG_1764.jpeg</a></li>
+                <li><a href="#" class="bb-file" data-src="Biology/IMG_1765.jpeg" data-rotate="90">IMG_1765.jpeg</a></li>
+                <li><a href="#" class="bb-file" data-src="Biology/IMG_1766.jpeg" data-rotate="90">IMG_1766.jpeg</a></li>
+              </ul>
 
-            <h5>Calculus</h5>
-            <ul>
-              <li><a href="#" class="bb-file" data-src="Calculus/End of term 1.PNG">End of term 1.PNG</a></li>
-              <li><a href="#" class="bb-file" data-src="Calculus/End of term 2.PNG">End of term 2.PNG</a></li>
-              <li><a href="#" class="bb-file" data-src="Calculus/Mid-term.jpg">Mid-term.jpg</a></li>
-            </ul>
+              <h5>Business Enviroment</h5>
+              <ul>
+                <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2685.JPG" data-rotate="90">IMG_2685.JPG</a></li>
+                <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2686.JPG" data-rotate="90">IMG_2686.JPG</a></li>
+                <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2687.JPG" data-rotate="90">IMG_2687.JPG</a></li>
+                <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2688.JPG" data-rotate="90">IMG_2688.JPG</a></li>
+                <li><a href="#" class="bb-file" data-src="Business Enviroment/Mid term/IMG_2689.JPG" data-rotate="90">IMG_2689.JPG</a></li>
+              </ul>
+
+              <h5>Calculus</h5>
+              <ul>
+                <li><a href="#" class="bb-file" data-src="Calculus/End of term 1.PNG">End of term 1.PNG</a></li>
+                <li><a href="#" class="bb-file" data-src="Calculus/End of term 2.PNG">End of term 2.PNG</a></li>
+                <li><a href="#" class="bb-file" data-src="Calculus/Mid-term.jpg">Mid-term.jpg</a></li>
+              </ul>
+            </div>
           </aside>
 
           <section class="bb-right">
-            <img id="bbViewerImg" alt="Selected file" />
-            <p id="bbViewerCaption" class="muted bb-viewer-caption"></p>
+            <div class="bb-viewer-card">
+              <div class="bb-viewer-toolbar">
+                <div class="bb-toolbar-info">
+                  <span id="bbDocCounter" class="bb-doc-counter">1 / 11</span>
+                  <span id="bbDocTitle" class="bb-doc-title">Select a file</span>
+                </div>
+                <div class="bb-toolbar-actions">
+                  <div class="bb-btn-group">
+                    <button id="bbBtnPrev" class="bb-tool-btn" title="Trang trước (phím ◄)" aria-label="Previous file">‹ Trước</button>
+                    <button id="bbBtnNext" class="bb-tool-btn" title="Trang sau (phím ►)" aria-label="Next file">Sau ›</button>
+                  </div>
+                  <div class="bb-btn-group">
+                    <button id="bbBtnRotateLeft" class="bb-tool-btn icon-btn" title="Xoay trái 90°" aria-label="Rotate left">↺</button>
+                    <button id="bbBtnRotateRight" class="bb-tool-btn icon-btn" title="Xoay phải 90°" aria-label="Rotate right">↻</button>
+                  </div>
+                  <div class="bb-btn-group">
+                    <button id="bbBtnZoomOut" class="bb-tool-btn icon-btn" title="Thu nhỏ (-)" aria-label="Zoom out">−</button>
+                    <button id="bbBtnZoomReset" class="bb-tool-btn" title="Đặt lại kích thước">100%</button>
+                    <button id="bbBtnZoomIn" class="bb-tool-btn icon-btn" title="Phóng to (+)" aria-label="Zoom in">+</button>
+                  </div>
+                  <div class="bb-btn-group">
+                    <button id="bbBtnFullscreen" class="bb-tool-btn icon-btn" title="Xem toàn màn hình" aria-label="Fullscreen viewer">⛶</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="bbViewerFrame" class="bb-viewer-frame">
+                <div id="bbSpinner" class="bb-spinner" aria-hidden="true"></div>
+                <img id="bbViewerImg" alt="Selected file" />
+              </div>
+
+              <div class="bb-viewer-footer">
+                <p id="bbViewerCaption" class="muted bb-viewer-caption"></p>
+              </div>
+            </div>
           </section>
         </div>
       </div>
